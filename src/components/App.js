@@ -2,11 +2,16 @@ import React, { Component } from 'react';
 import Inventory from './Inventory';
 import Header from './Header';
 import Order from './Order';
+import fishes from '../sample-fishes';
 
 class App extends Component {
   state = {
     fishes: {},
     order: {}
+  };
+
+  loadSampleFishes = () => {
+    this.setState({ fishes: fishes });
   };
 
   //prop function to get the data from the child components
@@ -24,7 +29,10 @@ class App extends Component {
         </div>
         <Order />
         {/*Props function added to the child component*/}
-        <Inventory addFish={this.addFish} />
+        <Inventory
+          addFish={this.addFish}
+          loadSampleFishes={this.loadSampleFishes}
+        />
       </div>
     );
   }

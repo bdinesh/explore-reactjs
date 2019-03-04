@@ -20,7 +20,7 @@ class AddFishForm extends Component {
     //sends the data to parent component using props function
     this.props.addFish(fish);
 
-    //clears the form
+    //clears the form fields
     event.currentTarget.reset();
   };
 
