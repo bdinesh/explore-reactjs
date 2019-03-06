@@ -3,6 +3,7 @@ import Inventory from './Inventory';
 import Header from './Header';
 import Order from './Order';
 import fishes from '../sample-fishes';
+import Fish from './Fish';
 
 class App extends Component {
   state = {
@@ -12,6 +13,12 @@ class App extends Component {
 
   loadSampleFishes = () => {
     this.setState({ fishes: fishes });
+  };
+
+  addToCart = key => {
+    const order = { ...this.state.order };
+    order[key] = order[key] + 1 || 1;
+    this.setState({ order });
   };
 
   //prop function to get the data from the child components
@@ -26,6 +33,16 @@ class App extends Component {
       <div className="catch-of-the-day">
         <div className="menu">
           <Header tagline={'Fresh sea food'} />
+          <ul className="fishes">
+            {Object.keys(this.state.fishes).map(key => (
+              <Fish
+                key={key}
+                index={key}
+                details={this.state.fishes[key]}
+                addToCart={this.addToCart}
+              />
+            ))}
+          </ul>
         </div>
         <Order />
         {/*Props function added to the child component*/}
