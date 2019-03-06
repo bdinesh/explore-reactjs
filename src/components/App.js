@@ -44,7 +44,7 @@ class App extends Component {
             ))}
           </ul>
         </div>
-        <Order />
+        <Order fishes={this.state.fishes} order={this.state.order} />
         {/*Props function added to the child component*/}
         <Inventory
           addFish={this.addFish}
